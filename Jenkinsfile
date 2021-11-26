@@ -1,18 +1,16 @@
 pipeline {
-  agent {
-    node {
-      label 'master'
+    agent {
+        docker {
+            image 'maven:3-alpine' 
+            args '-v /root/.m2:/root/.m2' 
+        }
     }
-
-  }
-  stages {
-    stage('Build') {
-      steps {
-
-		readMavenPom file: './pom.xml'
-		/* buildPlugin() */
-		}
-	  }
+    stages {
+        stage('Build') { 
+            steps {
+                sh 'mvn -B -DskipTests clean package' 
+            }
+        }
 	}
 }
 	
