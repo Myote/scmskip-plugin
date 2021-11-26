@@ -1,2 +1,2 @@
-readMavenPom file: '/homes/Myote/git/scmskip-plugin/pom.xml'
+readMavenPom file: '/volume1/homes/Myote/git/scmskip-plugin/pom.xml'
 /* buildPlugin() */
