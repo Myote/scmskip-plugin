@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'maven:3-alpine' 
-            args '-v /root/.m2:/var/services/homes/Myote/.m2' 
+            args '-v /var/services/homes/Myote/.m2:/root/.m2' 
         }
     }
     stages {
