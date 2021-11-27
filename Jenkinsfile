@@ -14,3 +14,4 @@ pipeline {
 	}
 }
 	
+/* docker run --rm -u root -p 8080:8080 -v /volume1/homes/Myote/jenkinsci:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkinsci/blueocean */
