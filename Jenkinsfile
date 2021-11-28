@@ -5,7 +5,12 @@ pipeline {
             args '-v /var/services/homes/Myote/.m2:/root/.m2' 
         }
     }
-    stages {
+	stages {
+        stage('Checkout') {
+            steps {
+                scmSkip(deleteBuild: true, skipPattern:'.*\\[ci skip\\].*')
+				}
+            }
         stage('Build') { 
             steps {				
                 sh 'mvn -B -DskipTests clean package' 
