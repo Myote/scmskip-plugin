@@ -8,10 +8,7 @@ pipeline {
 	stages {
         stage('Checkout') {
             steps {
-                /* scmSkip(deleteBuild: true, , skipPattern:'.*ci skip.*') */
-				warnError('skip') {
-					sh 'if [git log -n 1 | grep skip] then echo skip'
-					}
+                scmSkip(deleteBuild: true, , skipPattern:'.*skip.*')
 				}
             }
         stage('Build') { 
