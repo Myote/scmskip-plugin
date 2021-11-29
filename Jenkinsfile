@@ -14,10 +14,11 @@ pipeline {
         stage('Build') { 
 		when {
 			not {
-				changelog '.*^\\[ci skip\\] .+$'
+				changelog '.*\\[ci skip\\].*'
 				}
-				steps {				
-					sh 'mvn -B -DskipTests clean package' 
+			}
+			steps {				
+				sh 'mvn -B -DskipTests clean package' 
 				}
 			}
         }
