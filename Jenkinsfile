@@ -12,11 +12,6 @@ pipeline {
 				}
             }
         stage('Build') { 
-		when {
-			not {
-				changelog '.*\\[ci skip\\].*'
-				}
-			}
 			steps {				
 				sh 'mvn -B -DskipTests clean package' 
 				}
