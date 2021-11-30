@@ -9,8 +9,9 @@ pipeline {
   stages {
     stage('prepare') {
       steps {
-		node(label: 'master')
+		agent{'master' {
         ciSkip(action: 'check')
+		}
       }
     }
 
