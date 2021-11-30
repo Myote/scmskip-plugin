@@ -1,4 +1,4 @@
-@Library('shared-libs')_
+@Library('ciSkip')_
 		
 pipeline {
     agent {
