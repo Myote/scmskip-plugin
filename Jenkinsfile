@@ -7,12 +7,13 @@ pipeline {
 
   }
   stages {
-    stage('prepare') {
-      steps {
-		node{label 'master'}
-		ciSkip(action: 'check')
+	stage('prepare') { 
+		steps {
+			node('master') {
+				ciSkip action: 'check'
+				}
+			} 
 		}
-	}
 
     stage('Build') {
       steps {
