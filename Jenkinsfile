@@ -6,17 +6,15 @@ pipeline {
         }
     }
 	stages {
-        stage('Checkout') {
-            steps {
-                 scmSkip(deleteBuild: true, , skipPattern:'.*totoskip.*') 
-				}
-            }
+		stage('prepare') { steps { ciSkip action: 'check' } }
+
         stage('Build') { 
 			steps {				
 				sh 'mvn -B -DskipTests clean package' 
 				}
 			}
         }
+	post { always { ciSkip action: 'postProcess' } }
 	}
 
 
