@@ -1,30 +1,17 @@
 pipeline {
   agent {
     docker {
-      image 'maven:3-alpine'
+      image 'maven-git'
       args '-v /var/services/homes/Myote/.m2:/root/.m2'
     }
-
   }
+  
   stages {
-	stage('prepare') { 
-		steps {
-			node('master') {
-				ciSkip action: 'check'
-				}
-			} 
-		}
+	stage('prepare') { steps { ciSkip action: 'check' } }
 
-    stage('Build') {
-      steps {
-        sh 'mvn -B -DskipTests clean package'
-      }
-    }
+    stage('Build') { steps { sh 'mvn -B -DskipTests clean package' } }
+}
 
-  }
-  post {
-	always {
-		ciSkip(action: 'postProcess')
-		}
-	}
+  post { always { ciSkip action: 'postProcess' } }
+
 }
