@@ -1,5 +1,4 @@
-@Library('ciSkip')_
-		
+
 pipeline {
     agent {
         docker {
