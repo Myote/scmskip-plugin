@@ -5,6 +5,10 @@ pipeline {
             args '-v /var/services/homes/Myote/.m2:/root/.m2' 
         }
     }
+	libraries {
+		lib('ciSkip')
+		}
+		
 	stages {
 		stage('prepare') { steps { ciSkip action: 'check' } }
 
