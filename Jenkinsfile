@@ -7,7 +7,7 @@ pipeline {
   }
   
   stages {
-	stage('prepare') { steps { ciSkip action: 'check' } }
+	stage('ciSkip') { steps { ciSkip action: 'check' } }
 
     stage('Build') { steps { sh 'mvn -B -DskipTests clean package' } }
 }
