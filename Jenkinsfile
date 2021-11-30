@@ -1,5 +1,5 @@
 libraries {
-	lib('ciSkip')
+	lib('shared-libs')
 	}
 		
 pipeline {
