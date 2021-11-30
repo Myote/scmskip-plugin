@@ -1,6 +1,4 @@
- library {
-     lib('ciSkip')
- }
+@Library('ciSkip')_
 		
 pipeline {
     agent {
