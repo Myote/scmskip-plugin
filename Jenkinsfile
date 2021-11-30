@@ -9,11 +9,13 @@ pipeline {
   stages {
     stage('prepare') {
       steps {
-		agent{'master' {
-        ciSkip(action: 'check')
+		agent{
+			master {
+				ciSkip(action: 'check')
+				}
+			}
 		}
-      }
-    }
+	}
 
     stage('Build') {
       steps {
@@ -23,9 +25,8 @@ pipeline {
 
   }
   post {
-    always {
-      ciSkip(action: 'postProcess')
-    }
-
-  }
+	always {
+		ciSkip(action: 'postProcess')
+		}
+	}
 }
