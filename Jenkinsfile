@@ -10,7 +10,7 @@ pipeline {
     stage('prepare') {
       steps {
 		node{
-			master {
+			label 'master' {
 				ciSkip(action: 'check')
 				}
 			}
