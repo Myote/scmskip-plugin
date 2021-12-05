@@ -2,7 +2,7 @@ pipeline {
   agent {
     docker {
       image 'maven:3-alpine'
-      args '-u 1000 -v /home/myote/.m2:/root/.m2'
+      args '-v /home/myote/.m2:/root/.m2'
     }
   }
   
