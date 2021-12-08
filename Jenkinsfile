@@ -13,9 +13,7 @@ pipeline {
 
     stage('Build') { 
 		when {
-			expression {
-				return env.CI_SKIP = 'false'
-				}
+			env.CI_SKIP = 'false'
 			}
 		steps { sh 'mvn -B -DskipTests clean package' } 
 		}
