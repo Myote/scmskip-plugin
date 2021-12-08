@@ -10,7 +10,7 @@ pipeline {
 	stage('ciSkip') { steps { ciSkip action: 'check' } }
 	/* stage('ciSkip') { steps { scmSkip(deleteBuild: true, skipPattern:'.*\\[ci skip\\].*') } } */
 
-    stage('Build') { when { expression { env.CI_SKIP = 'false' } } steps { sh 'mvn -B -DskipTests clean package' } }
+    stage('Build') { when { expression { return env.CI_SKIP = 'false' } } steps { sh 'mvn -B -DskipTests clean package' } }
 }
 
   post { always { ciSkip action: 'postProcess' } }
