@@ -13,7 +13,7 @@ pipeline {
 
     stage('Build') { 
 		when {
-			env.CI_SKIP = 'false'
+			environment name: env.CI_SKIP , value: 'false'
 			}
 		steps { sh 'mvn -B -DskipTests clean package' } 
 		}
