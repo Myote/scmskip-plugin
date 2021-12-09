@@ -11,7 +11,7 @@ pipeline {
 	/* stage('ciSkip') { steps { scmSkip(deleteBuild: true, skipPattern:'.*\\[ci skip\\].*') } } */
 
     stage('Build') { 
-		when { environment name: CI_SKIP , value: 'true' }
+		when { expression env.CI_SKIP='false' }
 		steps { sh 'mvn -B -DskipTests clean package' } 
 		}
 	}
