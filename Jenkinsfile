@@ -11,7 +11,7 @@ pipeline {
 	/* stage('ciSkip') { steps { scmSkip(deleteBuild: true, skipPattern:'.*\\[ci skip\\].*') } } */
 
     stage('Build') { 
-		when { equals expected: 'SUCCESS' actual: currentBuild:currentResult }
+		when { equals expected: 'SUCCESS', actual: currentBuild:currentResult }
 		steps { sh 'mvn -B -DskipTests clean package' } 
 		}
 	}
