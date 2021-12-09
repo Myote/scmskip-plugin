@@ -1,0 +1,21 @@
+pipeline {
+  agent {
+    docker {
+      image 'maven:3-alpine'
+      args '-v /var/services/homes/Myote/.m2:/root/.m2'
+    }
+  }
+  
+  stages {
+	stage('ciSkip') { steps { ciSkip action: 'check' } }
+	/* stage('ciSkip') { steps { scmSkip(deleteBuild: true, skipPattern:'.*\\[ci skip\\].*') } } */
+
+    stage('Build') { 
+		when { environment name: CI_SKIP , value: 'false' }
+		steps { sh 'mvn -B -DskipTests clean package' } 
+		}
+	}
+
+  post { always { ciSkip action: 'postProcess' } }
+
+}
