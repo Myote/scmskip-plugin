@@ -7,8 +7,7 @@ pipeline {
   }
   
   stages {
-	stage('ciSkip') {
-		steps { ciSkip action: 'check' } }
+	stage('ciSkip') { steps { ciSkip action: 'check' } }
 	/* stage('ciSkip') { steps { scmSkip(deleteBuild: true, skipPattern:'.*\\[ci skip\\].*') } } */
 
     stage('Build') { 
